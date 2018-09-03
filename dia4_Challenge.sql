@@ -50,6 +50,8 @@ SELECT FIRST_NAME, LAST_NAME, JOB_ID FROM Employees
 	WHERE JOB_ID IN (
 	SELECT DISTINCT JOB_ID from Employees
 		WHERE JOB_ID NOT LIKE '%MAN'
+		WHERE JOB_ID NOT LIKE '%VP'
+		WHERE JOB_ID NOT LIKE '%PRES'
 	);
 
 
@@ -96,9 +98,7 @@ SELECT DEPARTMENT_NAME, Managers.FIRST_NAME, Locations.CITY FROM Employees
     ON Employees.MANAGER_ID = Managers.EMPLOYEE_ID
     
 	INNER JOIN Locations
-	ON Departments.LOCATION_ID = Locations.LOCATION_ID
-
-	GROUP BY Managers.FIRST_NAME;
+	ON Departments.LOCATION_ID = Locations.LOCATION_ID;
 
 -- 5) Write a query to display the job title and average salary of employees.
 SELECT JOB_TITLE, AVG(SALARY) FROM Employees
